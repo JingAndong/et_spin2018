@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <script src="../../head.js" type="text/javascript"></script>
+  <title>Binary Neutron Star</title>
+</head>
+
+<body>
+  <header>
+    <script src="../../menu.js" type="text/javascript">
+    </script>
+  </header>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 section">
+        <br/>
+        <br/>
+        <h2><b>Gallery: Binary, inspiraling neutron stars forming a hypermassive neutron star</b>
+        </h2>
+        <script src="jwplayer/jwplayer.js" type="text/javascript">
+        </script>
+
+        <p>This simulation shows how to evolve a pair of neutron stars, reading in initial data
+        provided by the <a href="http://www.lorene.obspm.fr/">LORENE</a> code. The video shows the
+        rest mass density in an equatorial slice of the simulation. The emitted gravitational waves
+        of the inspiral and due to the oscillations in the formed hypermassive neutron star are
+        shown as well.</p>
+
+
+        <table class="htable">
+          <tr>
+            <th>Parameter file</th>
+
+            <td>
+              <a href="nsnstohmns.par">NsNsToHMNS.par</a>
+            </td>
+            <td></td>
+          </tr>
+
+
+          <tr>
+            <th>Thornlist</th>
+
+            <td>
+              <a href="nsnstohmns.th">nsnstohmns.th</a>
+            </td>
+            <td><p align="left">Use with
+            <code>./GetComponents  http://einsteintoolkit.org/gallery/bns/nsnstohmns.th</code>
+            to dowload the code and compile using
+            <code>simfactory/bin/sim build --thornlist thornlists/nsnstohmns.th</code>
+            once downloaded.  This thornlist contains the thorns of the
+            Einstein Toolkit as well as the thorn <code>NSTracker</code> which
+            is not part of the Einstein Toolkit yet.</p></td>
+          </tr>
+
+
+          <tr>
+            <th>Initial data file</th>
+
+            <td>
+              <a href="G2_I12vs12_D4R33T21_45km.resu.xz">G2_I12vs12_D4R33T21_45km.resu.xz</a>
+            </td>
+            <td><p align="left">Uncompress using <a href="http://en.wikipedia.org/wiki/XZ_Utils">unxz</a>.</p></td>
+          </tr>
+
+
+          <tr>
+            <th>Support scripts</th>
+
+            <td>
+              <a href="scripts.tar.gz">scripts.tar.gz</a>
+            </td>
+            <td></td>
+          </tr>
+
+
+          <tr>
+            <th>approx. memory</th>
+
+            <td>8.8 GB</td>
+            <td></td>
+          </tr>
+
+
+          <tr>
+            <th>approx. runtime</th>
+
+            <td>12 hours using 48 cores</td>
+            <td></td>
+          </tr>
+        </table>
+
+        <br/>
+        <br/>
+
+        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 section">
+          <a href="mp_Psi4_l2_m2_r300.00.png"><img alt="Psi_4^{2,2} at r=300M over time" src=
+          "mp_Psi4_l2_m2_r300.00.png"></a>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12 section">
+          <div id="NsNsToHMNS_rho">
+            Loading the player...
+            Download movie: <a href="rho.mp4">rho.mp4</a> 
+            <br>
+            <script type="text/javascript">
+            jwplayer("NsNsToHMNS_rho").setup({
+              file: "rho.mp4",
+              image: "rho.png",
+              width: 640, height: 480
+            });
+            </script> 
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 section">
+          <script src="../../footer/footer.js" type="text/javascript"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

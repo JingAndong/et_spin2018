@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <script src="../../head.js" type="text/javascript"></script>
+  <title>Poisson equation</title>
+</head>
+
+<body>
+  <header>
+    <script src="../../menu.js" type="text/javascript">
+    </script>
+  </header>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 section">
+        <h2><b>Gallery: Poisson equation</b>
+        </h2>
+
+
+        <p>This example shows how to solve the Poisson equation with a generic source term using
+        the <a href=
+        "https://bitbucket.org/eloisa/ctthorns/src/master/CT_MultiLevel/?at=master">CT_MultiLevel</a>
+        elliptic solver. <a href="http://einsteintoolkit.org/thornguide/CTThorns/CT_MultiLevel/documentation.html">Documentation</a> for
+        CT_MultiLevel is available. To assess the performance of the algorithm, we start by
+        prescribing a solution phi0 (in this case, a superposition of Gaussian functions), and
+        construct the source term by taking the Laplacian of phi0. The plots show the final
+        solution phi (color plot), the source term (white contour surfaces) and the solution error
+        phi-phi0 as a function of the iteration number.</p>
+
+
+        <table>
+          <tr>
+            <th>Parameter file</th>
+
+            <td>
+              <a href="poisson.par">poisson.par</a>
+            </td>
+          </tr>
+
+
+          <tr>
+            <th>Thornlist</th>
+
+            <td>
+              <a href="poisson.th">poisson.th</a>
+            </td>
+          </tr>
+
+
+          <tr>
+            <th>approx. memory</th>
+
+            <td>32 GB</td>
+          </tr>
+
+
+          <tr>
+            <th>approx. runtime</th>
+
+            <td>9.6 core hours</td>
+          </tr>
+        </table>
+
+
+        <h5>Solution</h5>
+
+
+        <p><img  alt="Solution psi" src="psi.png" width="60%">
+        </p>
+
+
+        <h5>Error</h5>
+
+
+        <p><img  alt="Error" src="err.png" width="60%">
+        </p>
+        <script src="../../footer/footer.js" type="text/javascript">
+        </script>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

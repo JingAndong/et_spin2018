@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <script src="../../head.js" type="text/javascript"></script>
+  <title>Neutron Star</title>
+</head>
+
+<body>
+  <header>
+    <script src="../../menu.js" type="text/javascript">
+    </script>
+  </header>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12-col-sm-12 col-xs-12 section">
+
+              <h2><b>Gallery: Single stable neutron star</b>
+              </h2>
+
+
+              <p>This simulation shows how to evolve a stable, single neutron star. It uses a TOV
+              solution as initial data and follows the initial (numerical) perturbations, writing the
+              maximum density to disk. What can be seen is that the star oscillates for a few cycles
+              (only very slightly because the solution is stationary and the induced numerical
+              perturbation is small), before numerical errors due to the lack of resolution spoil the
+              results. The size of this simulation is intentionally kept as small as possible, thus the
+              resolution is about as low possible without loosing any confidence in at least
+              quantitatively correct results. It is intended to be used as quick example in lectures,
+              workshops or summer schools where both time and computational power are typically
+              scarce.</p>
+
+
+              <table >
+                <tr>
+                  <th>Parameter file</th>
+                  <td>
+                    <a href="tov.par">tov.par</a>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>Thornlist</th>
+
+                  <td>
+                    <a href=
+                    "https://bitbucket.org/einsteintoolkit/manifest/raw/ET_2018_02/einsteintoolkit.th">ET
+                    Tesla release (ET_2018_02)</a>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>approx. memory</th>
+
+                  <td>0.25 GB</td>
+                </tr>
+
+
+                <tr>
+                  <th>approx. runtime</th>
+
+                  <td>2.5 SU</td>
+                </tr>
+              </table>
+              <br/>
+              <br/>
+              <br/>
+        </div>
+        <div class="col-lg-6 col-xs-12 col-md-8 col-sm-6">
+          <a href="rho_max.png"><img alt="Maximum density over time" width="100%" src="rho_max.png"></a> 
+        </div>
+        <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+          <script src="../../footer/footer.js" type="text/javascript"></script>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <script src="../../head.js" type="text/javascript"></script>
+  <title>Multipatch wave equation</title>
+</head>
+
+<body>
+  <header>
+    <script src="../../menu.js" type="text/javascript">
+    </script>
+  </header>
+  <div class="container">
+    <div class="row">
+
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 section">
+
+        <h2>Gallery: Multipatch wave equation</h2>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<p>The <a href="http://llamacode.bitbucket.org/">Llama</a> code is a
+3-dimensional multiblock infrastructure for Cactus based on Carpet. It
+provides different patch systems that cover the simulation domain by a
+set of overlapping patches. Each of these patches has local
+cooordinates with a well-defined relation to global Cartesian
+coordinates. Information between the different patches is communicated
+via interpolation in the overlap zones.</p>
+
+<p>Here we show an example evolution of a wave equation on a Kerr
+background using the "Thornburg2004nc" patch-system, consisting of 90
+degree by 90 degree wedges centred on each of the +x, -x, +y, -y, +z,
+-z coordinate axes.  This provides a complete covering of a region
+between rmin and rmax with smooth inner and outer boundaries.  The
+initial data is an l=2, m=2 spherical harmonic in the angular
+directions, and a Gaussian in the radial direction.  An alternative
+patch system, "Thornburg2004", adds a cubical patch enclosing r &lt; rmin
+in which standard Carpet box-in-box mesh refinement can be
+employed. This is used in the <a href="/gallery/bbh/GW150914.th">GW150914</a>
+gravitational wave gallery example.</p>
+
+<p>We ask that if you make use of the Llama code, then
+please <a href="../../../documentation/licenses/">cite</a> Llama, the
+Einstein Toolkit, the Carpet mesh-refinement driver and Cactus.</p>
+
+<h3>Simulation details</h3>
+
+  <h4>Computational details</h4>
+  <table style="word-wrap: break-word;">
+   <tr ><th>Submission command</th><td>simfactory/bin/sim create-submit Kerr-Schild_Multipole
+<span style="white-space: nowrap;">--parfile</span> arrangements/Llama/LlamaWaveToy/par/Kerr-Schild_Multipole.par</td></tr>
+   <tr ><th>Total memory</th><td >800 MB</td></tr>
+   <tr><th>Run time</th><td>About 10 minutes on 2&#8203; laptop cores</td></tr>
+  </table>
+<p>This example was last tested on 5-Feb-2018.</p>
+</div>
+
+      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-8 sections-separator">
+        <h3>Example</h3>
+        <a class="thumbnail" href="kerr.png"><img alt="BH horizons" src="kerr.png"></a>
+        <p class="caption">Projection into the xy plane of an l=2, m=2
+        multipole evolved with the wave equation on a spherical grid made of 6
+        coordinate patches. Image created using the <a href="https://wci.llnl.gov/simulation/computer-codes/visit/">VisIt</a> file <a href="Kerr-Schild_Multipole.session">Kerr-Schild_Multipole.session</a></p>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sections-separator">
+        <script src="../../footer/footer.js" type="text/javascript">
+        </script>
+      </div>
+  </div>
+  </div>
+</body>
+</html>

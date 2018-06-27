@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <script src="../../head.js" type="text/javascript"></script>
+
+  <title>Compile and Run</title>
+</head>
+
+<body>
+  <header>
+    <script src="../../menu.js" type="text/javascript">
+    </script>
+  </header>
+
+
+  <div class="container section">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <br/>
+        <br/>
+        <h1><b>Compile and run binary black hole GW150914</b></h1>
+
+        <h3>Download</h3>
+
+        <p>If you don't already have the Einstein Toolkit downloaded,
+        you can download it as
+        described <a href="../../download.html">here</a>.  You can use
+        the current release version.  </p>
+
+        <p>Download the parameter file:</p>
+
+<pre>
+cd Cactus
+curl -Lf http://einsteintoolkit.org/gallery/bbh/GW150914.rpar -o par/GW150914.rpar</pre>
+
+If you already have the Einstein Toolkit downloaded, configured and built, you can skip to <a href="#run">Run</a>.
+        <h3>Compile</h3>
+
+
+        <p>Configure SimFactory for your machine:</p>
+
+
+        <ul>
+          <li>If you are on a cluster that SimFactory supports, run
+
+            <pre>simfactory/bin/sim setup</pre>Hit enter for each question if the default is OK. If
+            you intend to run on a cluster that requires an allocation, make sure to configure this
+            during setup.
+          </li>
+
+
+          <li>If you are not using a cluster supported by SimFactory, see <a href=
+          "https://docs.einsteintoolkit.org/et-docs/Compiling_the_Einstein_Toolkit">Compiling the
+          Einstein Toolkit</a> for instructions.
+          </li>
+        </ul>
+
+
+        <p>Compile Cactus:</p>
+
+        <pre>simfactory/bin/sim build --thornlist manifest/einsteintoolkit.th</pre>
+
+        <h3 id="run">Run</h3>
+
+
+        <p>Note that the simulation requires about 82 GB of RAM, so most likely you will need to
+        use a cluster. Submit the simulation:</p>
+
+        <pre class="wrap">
+simfactory/bin/sim create-submit GW150914_28 <span style="white-space: nowrap;">--define N 28</span> <span style="white-space: nowrap;">--parfile par/GW150914.rpar</span> <span style="white-space: nowrap;">--procs 128</span> <span style="white-space: nowrap;">--walltime 24:00:00</span></pre>
+
+        <p>You can choose a different number of cores than 128; if it is too small, the simulation
+        will run out of memory.</p>
+
+
+        <p>When the simulation starts running, it will write its output data into GW150914_28 in
+        your simulations directory. You can find the directory containing the output with:</p>
+
+        <pre>simfactory/bin/sim get-output-dir GW150914_28</pre>
+
+        <p>You can see the status of the simulation with</p>
+
+        <pre>simfactory/bin/sim list-simulations GW150914_28</pre>
+
+        <p>for example</p>
+
+        <pre>GW150914_28             [ACTIVE (RUNNING), restart 0000, job id 363502]</pre>
+
+        <p>It will say FINISHED when the simulation has finished. You can check the output while it
+        is still running.</p>
+
+
+        <h3>Output</h3>
+
+
+        <p>You can see the console output of the simulation in</p>
+
+        <pre>/path/to/GW150914_28/output-0000/GW150914_28.out</pre>
+
+        <p>for example:</p>
+
+        <pre>
+Simulation name: GW150914_28
+Running simulation GW150914_28
+
+       10                                  
+  1   0101       ************************  
+  01  1010 10      The Cactus Code V4.3.0    
+ 1010 1101 011      www.cactuscode.org     
+  1001 100101    ************************  
+    00010101                               
+     100011     (c) Copyright The Authors  
+      0100      GNU Licensed. No Warranty  
+      0101                                 
+--------------------------------------------------------------------------------
+
+Cactus version:    4.3.0
+...
+----------------------------------------------------------------------------------------------------------
+Iteration      Time | *me_per_hour |              ML_BSSN::phi | *TISTICS::maxrss_mb | *TICS::swap_used_mb
+                    |              |      minimum      maximum |   minimum   maximum |   minimum   maximum
+----------------------------------------------------------------------------------------------------------
+        0     0.000 |    0.0000000 |    0.0005741    0.9995490 |      2580      3510 |         0         0
+        4     0.009 |    3.0212222 |    0.0005853    0.9995490 |      2781      3811 |         0         0
+        8     0.017 |    5.5436288 |    0.0005960    0.9995490 |      2781      3811 |         0         0
+       12     0.026 |    7.4708510 |    0.0006063    0.9995490 |      2781      3811 |         0         0
+       16     0.034 |    9.2093008 |    0.0006161    0.9995490 |      2781      3811 |         0         0
+...
+</pre>
+
+        <h3>Visualise</h3>
+
+
+        <p>You can do a quick-and-dirty visualisation of the coordinate tracks of the black holes
+        with gnuplot:</p>
+
+        <pre class="wrap">
+cd /path/to/GW150914_28/output-0000/GW150914_28
+gnuplot
+
+set size square 0.75,0.75
+set key
+plot 'puncturetracker-pt_loc..asc' u 23:33 title "BH 1", 'puncturetracker-pt_loc..asc' u 24:34 title "BH 2"
+</pre><img alt="BH trajectories" class="col-lg-4 col-md-5 col-sm-6 col-xs-6" src=
+"gnuplot_tracks.png" style="border: 1pt solid black;"><br>
+        <br>
+        <br>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <script src="../../footer/footer.js" type="text/javascript">
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

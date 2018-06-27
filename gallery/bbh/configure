@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -u
+set -e
+
+printf "Enter path to simulation directory: "
+read simdir
+echo "SIMULATIONS_DIRECTORY = $simdir" > make.conf
+
+echo "Wrote make.conf"

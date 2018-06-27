@@ -1,0 +1,307 @@
+######################################
+# Flesh parameters
+######################################
+
+Cactus::cctk_run_title = "Solving Poisson's equation with CT_MultiLevel (multigrid setup, FMG)"
+
+Cactus::cctk_full_warnings         = yes
+Cactus::highlight_warning_messages = no
+Cactus::cctk_timer_output          = "off"
+
+Cactus::terminate       = "any"
+Cactus::cctk_initial_time = 0
+Cactus::cctk_final_time = 0
+Cactus::cctk_itlast     = 0
+
+
+#############################################################################################
+ActiveThorns = "Boundary CartGrid3D CoordBase Slab SymBase"
+#############################################################################################
+
+CoordBase::domainsize = "minmax"
+
+CoordBase::xmin =  -1.00
+CoordBase::ymin =  -1.00
+CoordBase::zmin =  -1.00
+CoordBase::xmax =  +1.00
+CoordBase::ymax =  +1.00
+CoordBase::zmax =  +1.00
+CoordBase::dx   =  0.25
+CoordBase::dy   =  0.25
+CoordBase::dz   =  0.25
+
+CoordBase::boundary_size_x_lower     = 3
+CoordBase::boundary_size_y_lower     = 3
+CoordBase::boundary_size_z_lower     = 3
+CoordBase::boundary_size_x_upper     = 3
+CoordBase::boundary_size_y_upper     = 3
+CoordBase::boundary_size_z_upper     = 3
+
+CoordBase::boundary_shiftout_x_lower = 1
+CoordBase::boundary_shiftout_y_lower = 1
+CoordBase::boundary_shiftout_z_lower = 1
+CoordBase::boundary_shiftout_x_upper = 1
+CoordBase::boundary_shiftout_y_upper = 1
+CoordBase::boundary_shiftout_z_upper = 1
+
+CartGrid3D::type = "coordbase"
+
+##################################################################################
+ActiveThorns = "IOUtil Carpet CarpetLib CarpetInterp LoopControl CarpetReduce CarpetSlab"
+##################################################################################
+
+Carpet::adaptive_stepsize = "no"
+
+Carpet::schedule_barriers = no
+CarpetLib::output_bboxes  = no
+Carpet::init_fill_timelevels = "yes"
+
+Carpet::domain_from_coordbase = yes
+Carpet::max_refinement_levels = 6
+#Carpet::time_refinement_factors         = "[1,2,4,8]"
+
+driver::ghost_size       = 3
+Carpet::use_buffer_zones = yes
+
+Carpet::prolongation_order_space = 5
+Carpet::prolongation_order_time  = 2
+
+Carpet::convergence_level = 0
+
+Carpet::poison_new_timelevels = yes
+CarpetLib::poison_new_memory  = yes
+CarpetLib::poison_value       = 250
+
+Carpet::output_timers_every      = 0
+
+CarpetLib::max_allowed_memory_MB = 12288
+
+##################################################################
+ActiveThorns = "CarpetRegrid2"
+##################################################################
+
+CarpetRegrid2::num_centres  = 5
+
+CarpetRegrid2::num_levels_1 = 6
+CarpetRegrid2::position_x_1 = -0.5
+CarpetRegrid2::position_y_1 = -0.5
+CarpetRegrid2::radius_1[1]  = 5
+CarpetRegrid2::radius_1[2]  = 5
+CarpetRegrid2::radius_1[3]  = 5
+CarpetRegrid2::radius_1[4]  = 5
+CarpetRegrid2::radius_1[5]  = 0.4
+CarpetRegrid2::radius_1[6]  = 0.4
+CarpetRegrid2::radius_1[7]  = 0.4
+
+CarpetRegrid2::num_levels_2 = 6
+CarpetRegrid2::position_x_2 = -0.1
+CarpetRegrid2::position_y_2 = -0.1
+CarpetRegrid2::radius_2[1]  = 5
+CarpetRegrid2::radius_2[2]  = 5
+CarpetRegrid2::radius_2[3]  = 5
+CarpetRegrid2::radius_2[4]  = 5
+CarpetRegrid2::radius_2[5]  = 0.2
+CarpetRegrid2::radius_2[6]  = 0.2
+CarpetRegrid2::radius_2[7]  = 0.2
+
+CarpetRegrid2::num_levels_3 = 6
+CarpetRegrid2::position_x_3 = 0.5
+CarpetRegrid2::position_y_3 = 0.5
+CarpetRegrid2::radius_3[1]  = 5
+CarpetRegrid2::radius_3[2]  = 5
+CarpetRegrid2::radius_3[3]  = 5
+CarpetRegrid2::radius_3[4]  = 5
+CarpetRegrid2::radius_3[5]  = 0.2
+CarpetRegrid2::radius_3[6]  = 0.2
+CarpetRegrid2::radius_3[7]  = 0.2
+
+CarpetRegrid2::num_levels_4 = 6
+CarpetRegrid2::position_x_4 = -0.6
+CarpetRegrid2::position_y_4 = 0
+CarpetRegrid2::radius_4[1]  = 5
+CarpetRegrid2::radius_4[2]  = 5
+CarpetRegrid2::radius_4[3]  = 5
+CarpetRegrid2::radius_4[4]  = 5
+CarpetRegrid2::radius_4[5]  = 0.8
+CarpetRegrid2::radius_4[6]  = 0.8
+CarpetRegrid2::radius_4[7]  = 0.8
+
+CarpetRegrid2::num_levels_5 = 6
+CarpetRegrid2::position_x_5 = 0.6
+CarpetRegrid2::position_y_5 = -0.3
+CarpetRegrid2::radius_5[1]  = 5
+CarpetRegrid2::radius_5[2]  = 5
+CarpetRegrid2::radius_5[3]  = 5
+CarpetRegrid2::radius_5[4]  = 5
+CarpetRegrid2::radius_5[5]  = 0.8
+CarpetRegrid2::radius_5[6]  = 0.8
+CarpetRegrid2::radius_5[7]  = 0.8
+
+#################################
+ActiveThorns = "AEILocalInterp"
+ActiveThorns = "Fortran"
+ActiveThorns = "GenericFD"
+ActiveThorns = "HDF5"
+ActiveThorns = "InitBase"
+ActiveThorns = "LocalInterp"
+#################################
+
+#################################
+ActiveThorns = "MoL Time"
+#################################
+
+MoL::ODE_Method             = "RK4"
+MoL::MoL_Intermediate_Steps = 4
+MoL::MoL_Num_Scratch_Levels = 1
+
+Time::dtfac   = 0.2
+
+
+###################################################################################################
+ActiveThorns = "CT_MultiLevel CT_Analytic"
+###################################################################################################
+
+CT_MultiLevel::cycle_type          = "FMG cycle"
+CT_MultiLevel::tol                 = 1e-12
+CT_MultiLevel::omega               = 1
+CT_MultiLevel::fd_order            = 4
+CT_MultiLevel::output_norms        = "yes"
+CT_MultiLevel::nrelsteps_down      = 200
+CT_MultiLevel::nrelsteps_up        = 200
+CT_MultiLevel::nrelsteps_bottom    = 200
+CT_MultiLevel::nrelsteps_top       = 200
+CT_MultiLevel::topMGlevel          = 5
+CT_MultiLevel::compare_to_exact    = "yes"
+CT_MultiLevel::exact_solution_gfname[0] = "CT_Analytic::epsi"
+CT_MultiLevel::exact_laplacian_gfname[0] = "CT_Analytic::elaplacian"
+
+CT_MultiLevel::n0[0]               = 0
+CT_MultiLevel::inipsi_gfname[0]    = "CT_Analytic::testinipsi"
+CT_MultiLevel::cxx_gfname[0]       = "CT_Analytic::testcxx"
+CT_MultiLevel::cyy_gfname[0]       = "CT_Analytic::testcyy"
+CT_MultiLevel::czz_gfname[0]       = "CT_Analytic::testczz"
+CT_MultiLevel::c0_gfname[0]        = "CT_Analytic::testc0"
+
+CT_Analytic::free_data             = "exact"
+CT_Analytic::ampG                  = 1
+CT_Analytic::amp[0]                = 1
+CT_Analytic::x0[0]                 = -0.5
+CT_Analytic::y0[0]                 = -0.5
+CT_Analytic::sigmax[0]             = 0.2
+CT_Analytic::sigmay[0]             = 0.2
+CT_Analytic::sigmaz[0]             = 0.2
+CT_Analytic::amp[1]                = 1
+CT_Analytic::x0[1]                 = -0.1
+CT_Analytic::y0[1]                 = -0.1
+CT_Analytic::sigmax[1]             = 0.1
+CT_Analytic::sigmay[1]             = 0.1
+CT_Analytic::sigmaz[1]             = 0.1
+CT_Analytic::amp[2]                = 1
+CT_Analytic::x0[2]                 = 0.5
+CT_Analytic::y0[2]                 = 0.5
+CT_Analytic::sigmax[2]             = 0.1
+CT_Analytic::sigmay[2]             = 0.1
+CT_Analytic::sigmaz[2]             = 0.1
+CT_Analytic::amp[3]                = 1
+CT_Analytic::x0[3]                 = -0.6
+CT_Analytic::y0[3]                 = 0
+CT_Analytic::sigmax[3]             = 0.4
+CT_Analytic::sigmay[3]             = 0.4
+CT_Analytic::sigmaz[3]             = 0.4
+CT_Analytic::amp[4]                = 1
+CT_Analytic::x0[4]                 = 0.6
+CT_Analytic::y0[4]                 = -0.3
+CT_Analytic::sigmax[4]             = 0.4
+CT_Analytic::sigmay[4]             = 0.4
+CT_Analytic::sigmaz[4]             = 0.4
+
+CT_Analytic::other_timelevels      = 3
+
+#################################
+ActiveThorns = "CarpetIOBasic"
+#################################
+
+IOBasic::outInfo_every      = 1
+IOBasic::outInfo_reductions = "norm2"
+IOBasic::outInfo_vars       = "
+	CT_MultiLevel::psi
+	CT_MultiLevel::residual
+        Carpet::physical_time_per_hour
+"
+
+#################################
+ActiveThorns = "CarpetIOScalar"
+#################################
+
+IO::out_dir = $parfile
+
+IOScalar::one_file_per_group = yes
+
+IOScalar::outScalar_every = 0
+IOScalar::outScalar_vars  = "
+"
+
+#################################
+ActiveThorns = "CarpetIOASCII"
+#################################
+
+IOASCII::one_file_per_group = yes
+
+IOASCII::output_symmetry_points = no
+IOASCII::out3D_ghosts           = no
+
+IOASCII::out0D_criterion = "divisor"
+IOASCII::out0D_every = 0
+IOASCII::out0D_vars  = "
+"
+
+IOASCII::output_all_timelevels = "no"
+IOASCII::out1D_criterion = "divisor"
+IOASCII::out1D_every = 1
+IOASCII::out1D_vars  = "
+	CT_MultiLevel::psi
+	CT_MultiLevel::coeffs
+	CT_MultiLevel::residual
+	CT_MultiLevel::err
+	CT_Analytic::testinipsi
+	CT_Analytic::testc0
+	CT_Analytic::epsi
+"
+
+IOASCII::out2D_every = 0
+IOASCII::out2D_criterion = "divisor"
+IOASCII::out2D_vars  = "
+"
+
+IOASCII::out3D_every = 0
+IOASCII::out3D_criterion = "divisor"
+IOASCII::out3D_vars  = "
+	CT_MultiLevel::psi
+	CT_MultiLevel::coeffs
+"
+
+#################################
+Activethorns = "CarpetIOHDF5"
+#################################
+
+IOHDF5::out_criterion = "divisor"
+IOHDF5::out_every          = 1
+IOHDF5::one_file_per_group = yes
+IOHDF5::compression_level  = 0
+IOHDF5::out_vars  = "
+	CT_MultiLevel::psi
+	CT_MultiLevel::err
+	CT_MultiLevel::residual
+	CT_Analytic::testc0
+"
+
+IOHDF5::checkpoint          = "yes"
+IO::checkpoint_dir          = $parfile
+IO::checkpoint_ID           = "yes"
+IO::checkpoint_every        = 1280
+IO::checkpoint_on_terminate = "yes"
+IO::checkpoint_keep         = 2
+
+IO::recover     = "autoprobe"
+IO::recover_dir = $parfile
+
